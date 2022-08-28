@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Start</title>
+    <link href="/static/style/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<header>
+    <div id="logo">Samplicity</div>
+    <a href="http://localhost:8000/create/" id="createNew">Create new</a>
+    <a href="http://localhost:8000/" id="library">Library</a>
+    <a href="http://localhost:8000/profile/" id="profile">Profile</a>
+</header>
+<div class="file-interface">
+    <div class="file-chooser">
+        <input id="choose-file" class="action-btn" type="file">
+    </div>
+    <div class="file-modification">
+        <div id="name-field" class="modify-field">
+            <input maxlength="80" size="40">
+            <h5>Name</h5>
+        </div>
+        <div id="pitch-field" class="modify-field">
+            <input type="number" min="-12" max="12" maxlength="15" size="15">
+            <h5>Pitch</h5>
+        </div>
+        <div id="start-sample" class="modify-field">
+            <input type="range" maxlength="80" size="40">
+            <h5>Start</h5>
+        </div>
+        <div id="end-sample" class="modify-field">
+            <input type="range" maxlength="80" size="40">
+            <h5>End</h5>
+        </div>
+    </div>
+    <button id="save" class="action-btn">Save</button>
+</div>
+<script src="/static/scripts/scriptCreate.js" type="text/javascript"></script>
+</body>
+</html>

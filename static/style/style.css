@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+html {
+    height: 100%
+}
+
+body {
+    position: absolute;
+    float: left;
+    width: 100%;
+    height: 100%;
+    background-color: #E9E9E9;
+    color: #333;
+    font-family: "Rubik", Regular, sans-serif;
+    font-size: 1em;
+    line-height: 135%;
+}
+
+a {
+    color: #000;
+    opacity: 50%;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #EA9A7F;
+    opacity: 100%;
+}
+
+a, a:hover {
+    -webkit-transition: all .6s ease;
+    transition: all .6s ease;
+}
+
+.clear {
+    clear: both;
+}
+
+/* Header styles */
+
+header {
+    height: 11%;
+    width: 100%;
+    float: left;
+    background-color: #E9E9E9;
+    border-bottom-width: 1px;
+}
+
+header #logo {
+    font-family: "Rubik", sans-serif;
+    font-weight: bold;
+    padding-top: 2%;
+    padding-left: 11%;
+    width: 53%;
+    font-size: 220%;
+    color: #EA9A7F;
+    float: left;
+}
+
+header #createNew {
+    font-size: 120%;
+    margin-top: 2.1%;
+    width: 12%;
+    float: left;
+}
+
+header #library {
+    font-size: 120%;
+    margin-top: 2.1%;
+    width: 10%;
+    float: left;
+}
+
+header #profile {
+    font-size: 120%;
+    margin-top: 2.1%;
+    width: 10%;
+    float: left;
+}
+
+/* Body styles*/
+
+body {
+    background-color: #dedede;
+}
+
+/* Library page styles */
+
+.music-container {
+    background-color: white;
+    border-radius: 3px;
+    box-shadow: 0 20px 20px 0 rgba(187, 187, 187, 0.6);
+    display: flex;
+    padding: 20px 30px;
+    position: absolute;
+    bottom: 0;
+    width: 96.8%;
+    z-index: 10;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    margin-left: 14%;
+    justify-content: center;
+    z-index: 1;
+}
+
+.action-btn {
+    background-color: white;
+    border: 0;
+    color: #bbb8bb;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 0 20px;
+}
+
+.action-btn-big {
+    color: #EA9A7F;
+    font-size: 30px;
+}
+
+.action-btn:focus {
+    outline: 0;
+}
+
+.music-info {
+    display: inline-flex;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 15px 15px 0 0;
+    position: absolute;
+    margin-top: 17px;
+    margin-left: 30%;
+    transform: translateY(0%);
+    color: #000;
+    opacity: 55%;
+    width: 68%;
+}
+
+.progress-container {
+    background: rgba(141, 141, 141, 0.5);
+    cursor: pointer;
+    margin-left: 5%;
+    margin-top: 0.7%;
+    width: 58%;
+    height: 5px;
+}
+
+.progress {
+    background-color: #e5805e;
+    border-radius: 5px;
+    height: 100%;
+    width: 100%;
+    transition: width 0.1s linear;
+}
+
+.title {
+    max-width: 15%;
+    min-width: 15%;
+}
+
+#playlist {
+    background: rgba(222, 222, 222, 0.33);
+    border-radius: 10px;
+    padding: 5px 5px 3px 5px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8%;
+    height: 70%;
+    overflow: auto;
+}
+
+#playlist a {
+    font-size: 19px;
+    display: block;
+    cursor: pointer;
+    padding: 2px 4px;
+    margin-top: 8px;
+    border-radius: 5px;
+    height: 4%;
+    overflow: hidden;
+}
+
+#playlist a.file { background: rgba(255, 255, 255, 0.5);}
+#playlist a { background: rgba(255, 255, 255, 0.5); }
+#playlist a.playing { background: #e5805e; font-weight: bold; color: #cecece;}
+#playlist a:hover { background: rgba(255, 255, 255, 0.32);}
+
+
+/* Create page styles */
+
+.file-interface {
+    top: 35%;
+    left: 25%;
+    display: inline-block;
+    position: absolute;
+}
+
+.file-chooser {
+    border-radius: 5px;
+}
+
+.file-modification {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.modify-field {
+    margin-left: 20px;
+}
+
+#save {
+    margin-left: 60%;
+    margin-top: 100px;
+}
