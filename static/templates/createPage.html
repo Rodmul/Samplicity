@@ -14,27 +14,27 @@
 </header>
 <div class="file-interface">
     <div class="file-chooser">
-        <input id="choose-file" class="action-btn" type="file">
+        <input id="choose-file" class="action-btn" type="file" name="myFile">
     </div>
     <div class="file-modification">
         <div id="name-field" class="modify-field">
-            <input maxlength="80" size="40">
+            <input id="name" maxlength="80" size="40" type="text">
             <h5>Name</h5>
         </div>
         <div id="pitch-field" class="modify-field">
-            <input type="number" min="-12" max="12" maxlength="15" size="15">
+            <input id="pitch" type="number" min="-12" max="12" maxlength="15" size="15">
             <h5>Pitch</h5>
         </div>
         <div id="start-sample" class="modify-field">
-            <input type="range" maxlength="80" size="40">
+            <input id="start" type="range" maxlength="80" size="40" value="0">
             <h5>Start</h5>
         </div>
         <div id="end-sample" class="modify-field">
-            <input type="range" maxlength="80" size="40">
+            <input id="end" type="range" maxlength="80" size="40" value="100">
             <h5>End</h5>
         </div>
     </div>
-    <button id="save" class="action-btn">Save</button>
+    <button id="save-button" class="action-btn" onclick="uploadFile()">Save</button>
 </div>
 <script src="/static/scripts/scriptCreate.js" type="text/javascript"></script>
 </body>

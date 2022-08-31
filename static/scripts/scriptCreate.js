@@ -1,16 +1,18 @@
-const input = document.createElement('choose-file');
-input.type = 'file';
+const file = document.getElementById('choose-file');
 
-input.onchange = ev => {
-    var file = ev.target.files[0];
-
-    // setting up the reader
-    var reader = new FileReader();
-    reader.readAsText(file,'UTF-8');
-
-    // here we tell the reader what to do when it done reading...
-    reader.onload = readerEvent => {
-        var content = readerEvent.target.result; // this is the content!
-        console.log( content );
-    }
+async function uploadFile() {
+    let name = document.getElementById('name').value;
+    let pitch = document.getElementById('pitch').value;
+    let start = document.getElementById('start').value;
+    let end = document.getElementById('end').value;
+    let formData = new FormData();
+    formData.append("myFile", file.files[0]);
+    formData.append("fileName", name);
+    formData.append("pitch", pitch);
+    formData.append("start", start);
+    formData.append("end", end);
+    await fetch('/upload/', {
+        method: "POST",
+        body: formData
+    });
 }

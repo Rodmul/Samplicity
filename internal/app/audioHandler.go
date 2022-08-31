@@ -2,6 +2,7 @@ package app
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -41,7 +42,12 @@ func serveDir(w http.ResponseWriter, r *http.Request, path string) {
 		}
 	}()
 	file, err := os.Open(path)
-	defer file.Close()
+	defer func(file *os.File) {
+		err := file.Close()
+		if err != nil {
+			log.Fatalf("Failed to close file; %v", err)
+		}
+	}(file)
 	if err != nil {
 		panic(err)
 	}

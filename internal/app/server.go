@@ -13,17 +13,12 @@ type server struct {
 	router *http.ServeMux
 }
 
-type pageData struct {
-	Title string
-	Body  string
-}
-
 const (
 	baseURL = "/"
-	library = "library/"
 	profile = "profile/"
 	create  = "create/"
 	static  = "static/"
+	upload  = "upload/"
 )
 
 func NewServer() *server {
@@ -33,20 +28,17 @@ func NewServer() *server {
 }
 
 func (srv *server) Start() error {
-	//srv.router.HandleFunc(baseURL+start, srv.handleStart)
-	srv.router.HandleFunc(baseURL+create, srv.handleCreate())
-	srv.router.HandleFunc(baseURL, srv.handleLibrary())
-	srv.router.Handle(baseURL+filePrefix, srv.handleFile())
-	fileServer := http.FileServer(http.Dir("./static/"))
-	srv.router.Handle(baseURL+static, http.StripPrefix("/static", fileServer))
-
-	//srv.router.HandleFunc(baseURL, srv.Index)
 	srv.Logger.Printf("Start to listen to port %s", viper.GetString("port"))
 	return fmt.Errorf("failed to listen and serve: %w", http.ListenAndServe(viper.GetString("port"), srv.router))
 }
 
 func (srv *server) registerHandlers() {
-
+	srv.router.HandleFunc(baseURL+create, srv.handleCreate())
+	srv.router.HandleFunc(baseURL, srv.handleLibrary())
+	srv.router.Handle(baseURL+filePrefix, srv.handleFile())
+	srv.router.Handle(baseURL+upload, srv.uploadFile())
+	fileServer := http.FileServer(http.Dir("./static/"))
+	srv.router.Handle(baseURL+static, http.StripPrefix("/static", fileServer))
 }
 
 func (srv *server) handleCreate() http.HandlerFunc {
@@ -64,14 +56,6 @@ func (srv *server) handleCreate() http.HandlerFunc {
 			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		}
 	}
-}
-
-func (srv *server) Index(w http.ResponseWriter, r *http.Request) {
-	srv.Logger.Print("index func")
-}
-
-func (srv *server) handleStart(w http.ResponseWriter, r *http.Request) {
-	srv.Logger.Print("handleStart func")
 }
 
 func (srv *server) handleLibrary() http.HandlerFunc {
