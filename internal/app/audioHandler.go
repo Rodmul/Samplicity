@@ -1,7 +1,9 @@
 package app
 
 import (
+	"DriveApi/store"
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -9,9 +11,7 @@ import (
 )
 
 type FileInfo struct {
-	Name  string      `json:"Name"`
-	IsDir bool        `json:"IsDir"`
-	Mode  os.FileMode `json:"Mode"`
+	Name string
 }
 
 const (
@@ -20,6 +20,26 @@ const (
 )
 
 func (srv *server) handleFile() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		name := r.URL.Path[len(baseURL+filePrefix):]
+		if name == "" {
+			err := serverDirDB(w, r, srv.store)
+			if err != nil {
+				srv.Logger.Fatal(err)
+			}
+			return
+		}
+		sample, err := srv.store.Sample().GetByName(name)
+		path := fmt.Sprintf(sample.Path + sample.Name + "." + sample.Type)
+		srv.Logger.Println(path)
+		if err != nil {
+			srv.Logger.Println("failed to get sample by name; %v", err)
+		}
+		http.ServeFile(w, r, path)
+	}
+}
+
+func (srv *server) handleFiles() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		path := filepath.Join(root, r.URL.Path[len(baseURL+filePrefix)-1:])
 		stat, err := os.Stat(path)
@@ -61,8 +81,6 @@ func serveDir(w http.ResponseWriter, r *http.Request, path string) {
 
 	for i := range files {
 		fileInfos[i].Name = files[i].Name()
-		fileInfos[i].IsDir = files[i].IsDir()
-		fileInfos[i].Mode = files[i].Mode()
 	}
 
 	j := json.NewEncoder(w)
@@ -70,4 +88,18 @@ func serveDir(w http.ResponseWriter, r *http.Request, path string) {
 	if err := j.Encode(&fileInfos); err != nil {
 		panic(err)
 	}
+}
+
+func serverDirDB(w http.ResponseWriter, r *http.Request, s *store.Store) error {
+	samples, err := s.Sample().GetAll()
+	if err != nil {
+		return fmt.Errorf("failed to get samples; %w", err)
+	}
+
+	j := json.NewEncoder(w)
+	if err := j.Encode(&samples); err != nil {
+		return fmt.Errorf("failed to encode samples info to json format; %w", err)
+	}
+
+	return nil
 }

@@ -1,6 +1,8 @@
 package app
 
 import (
+	"DriveApi/internal/repository"
+	"DriveApi/store"
 	"fmt"
 	"github.com/spf13/viper"
 	"html/template"
@@ -11,6 +13,7 @@ import (
 type server struct {
 	Logger *log.Logger
 	router *http.ServeMux
+	store  *store.Store
 }
 
 const (
@@ -28,6 +31,19 @@ func NewServer() *server {
 }
 
 func (srv *server) Start() error {
+	database, err := repository.NewPostgresDB(repository.Config{
+		Host:     viper.GetString("db.host"),
+		Port:     viper.GetString("db.port"),
+		Username: viper.GetString("db.username"),
+		DBName:   viper.GetString("db.dbname"),
+		SSLMode:  viper.GetString("db.sslmode"),
+		Password: "1234",
+	})
+	if err != nil {
+		log.Fatalf("failed to initialize db: %s", err.Error())
+	}
+
+	srv.store = store.New(database, srv.Logger)
 	srv.Logger.Printf("Start to listen to port %s", viper.GetString("port"))
 	return fmt.Errorf("failed to listen and serve: %w", http.ListenAndServe(viper.GetString("port"), srv.router))
 }

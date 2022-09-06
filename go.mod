@@ -5,6 +5,9 @@ go 1.18
 require (
 	cloud.google.com/go/compute v1.8.0 // indirect
 	github.com/200sc/klangsynthese v0.2.1 // indirect
+	github.com/aws/aws-sdk-go v1.38.20 // indirect
+	github.com/coreos/go-systemd v0.0.0-20191104093116-d3cd4ed1dbcf // indirect
+	github.com/coreos/pkg v0.0.0-20220810130054-c7d1c02cb6cf // indirect
 	github.com/eaburns/bit v0.0.0-20131029213740-7bd5cd37375d // indirect
 	github.com/eaburns/flac v0.0.0-20171003200620-9a6fb92396d1 // indirect
 	github.com/fsnotify/fsnotify v1.5.4 // indirect
@@ -22,6 +25,7 @@ require (
 	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/hajimehoshi/go-mp3 v0.3.3 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
+	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/jmoiron/sqlx v1.3.5 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
@@ -35,12 +39,15 @@ require (
 	github.com/pelletier/go-toml v1.9.5 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.5 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
+	github.com/sandovalrr/mediacutter v0.0.0-20190804195958-e572e1bc53f6 // indirect
 	github.com/spf13/afero v1.9.2 // indirect
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/spf13/viper v1.12.0 // indirect
 	github.com/subosito/gotenv v1.4.1 // indirect
+	github.com/u2takey/ffmpeg-go v0.4.1 // indirect
+	github.com/u2takey/go-utils v0.3.1 // indirect
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	github.com/yobert/alsa v0.0.0-20200618200352-d079056f5370 // indirect
 	go.opencensus.io v0.23.0 // indirect

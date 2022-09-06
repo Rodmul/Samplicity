@@ -1,8 +1,9 @@
 package model
 
 type Sample struct {
-	Author   string
-	ID       int
-	FilePath string
-	Name     string
+	ID     int    `db:"id"`
+	Name   string `db:"name"`
+	Author string `db:"author"`
+	Path   string `db:"path"`
+	Type   string `db:"type"`
 }

@@ -217,6 +217,12 @@ body {
     margin-left: 20px;
 }
 
+#select-type-field {
+    margin-left: 20px;
+    height: 20px;
+    margin-top: 1px;
+}
+
 #save {
     margin-left: 60%;
     margin-top: 100px;

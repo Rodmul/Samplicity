@@ -43,8 +43,6 @@ function listFile(files) {
     const $b = $('#playlist');
     function addToList(i, f) {
         if (f.Name[0] === '.' || f.Name[0] === ':') return;
-        const dir = f.IsDir;
-        if(dir) return;
         f.Path = path.join('/');
         $('<a></a>').text(f.Name).data('file', f)
             .addClass("file")
