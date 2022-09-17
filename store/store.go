@@ -6,10 +6,11 @@ import (
 )
 
 type Store struct {
-	db               *DB
-	logger           *log.Logger
-	userRepository   Userter
-	sampleRepository Sampler
+	db                       *DB
+	logger                   *log.Logger
+	userRepository           Profiler
+	sampleRepository         Sampler
+	createdSamplesRepository Creator
 }
 
 func New(db *sqlx.DB, l *log.Logger) *Store {
@@ -19,7 +20,19 @@ func New(db *sqlx.DB, l *log.Logger) *Store {
 	}
 }
 
-func (s *Store) User() Userter {
+func (s *Store) CreatedSample() Creator {
+	if s.createdSamplesRepository != nil {
+		return s.createdSamplesRepository
+	}
+
+	s.createdSamplesRepository = &CreatedSamplesRepository{
+		store: s,
+	}
+
+	return s.createdSamplesRepository
+}
+
+func (s *Store) User() Profiler {
 	if s.userRepository != nil {
 		return s.userRepository
 	}

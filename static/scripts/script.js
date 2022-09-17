@@ -1,4 +1,5 @@
-const root = '/samples/'
+const samplesRoot = '/samples/'
+const createdRoot = 'created/'
 const path = []
 
 const audio = document.getElementById('audio')
@@ -12,7 +13,7 @@ google.load("jquery", "1.3.1");
 google.setOnLoadCallback(init);
 
 function init() {
-    load(path);
+    load("", path);
     $('#audio').bind('ended', next);
     $('#next').click(next);
     $('#prev').click(prev);
@@ -29,8 +30,8 @@ function init() {
         }
     });
 }
-function load(path)  {
-    const url = root+path.join('/');
+function load(root, path)  {
+    const url = samplesRoot+root+path.join('/');
     $.ajax({
         url: url,
         dataType: "json",

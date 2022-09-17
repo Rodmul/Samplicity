@@ -1,0 +1,110 @@
+@import url(https://weloveiconfonts.com/api/?family=fontawesome);
+
+/* ---------- ERIC MEYER'S RESET CSS ---------- */
+/* ---------- https://meyerweb.com/eric/tools/css/reset/ ---------- */
+
+@import url(https://meyerweb.com/eric/tools/css/reset/reset.css);
+
+
+[class*="fontawesome-"]:before {
+    font-family: 'FontAwesome', sans-serif;
+}
+
+h1 { font-size: 1em; }
+
+h1, p {
+    font-size: 18px;
+    margin-bottom: 26px;
+}
+
+strong {
+    font-weight: bold;
+}
+
+.uppercase { text-transform: uppercase; }
+
+#sing_up_text {
+    font-size: 16px;
+    text-align: center;
+    margin-left: 43%;
+}
+
+#login {
+    background: #E9E9E9;
+    margin-top: 16%;
+    margin-left: 37%;
+    padding: 35px;
+    height: 400px;
+    width: 400px;
+}
+
+#authorization_info {
+    background: #E9E9E9;
+    margin-top: 16%;
+    margin-left: 37%;
+    padding: 35px;
+    height: 340px;
+    width: 400px;
+}
+
+#profile_info {
+    background: #E9E9E9;
+    margin-top: 16%;
+    margin-left: 37%;
+    padding: 35px;
+    height: 400px;
+    width: 400px;
+}
+
+form fieldset input[type="text"],
+input[type="password"] {
+    appearance: none;
+    background: #d9d9d9;
+    border: #5a5656;
+    border-radius: 3px;
+    color: #5a5656;
+    font-family: inherit;
+    font-size: 16px;
+    height: 50px;
+    outline: none;
+    padding: 0 10px;
+    width: 380px;
+}
+
+form fieldset input[type="submit"] {
+    appearance: none;
+    background-color: #e5805e;
+    border: none;
+    border-radius: 3px;
+    color: #f4f4f4;
+    cursor: pointer;
+    font-family: inherit;
+    height: 50px;
+    text-transform: uppercase;
+    width: 400px;
+}
+
+form fieldset a {
+    color: #5a5656;
+    font-size: 10px;
+}
+
+form fieldset a:hover { text-decoration: underline; }
+
+#forgot_password_text {
+    font-size: 14px;
+}
+
+#email_input {
+    appearance: none;
+    background: #d9d9d9;
+    border: #5a5656;
+    border-radius: 3px;
+    color: #5a5656;
+    font-family: inherit;
+    font-size: 16px;
+    height: 50px;
+    outline: none;
+    padding: 0 10px;
+    width: 380px;
+}

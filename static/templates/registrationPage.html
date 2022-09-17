@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Start</title>
+  <link href="/static/style/loginStyle.css" rel="stylesheet" type="text/css">
+  <link href="/static/style/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<header>
+  <div id="logo">Samplicity</div>
+  <a href="http://localhost:8000/create/" id="createNew">Create new</a>
+  <a href="http://localhost:8000/" id="library">Library</a>
+  <a href="http://localhost:8000/profile/" id="profile">Profile</a>
+</header>
+<div id="login">
+
+  <h1><strong>Welcome.</strong> Please login.</h1>
+
+  <form>
+
+    <fieldset>
+
+      <p><input type="text" required value="Username" placeholder="Username" id="username"></p>
+      <p><input id="email_input" type="email" required value="Email" placeholder="Email"></p>
+
+      <p><input type="password" required value="Password" placeholder="Password" id="password"></p>
+
+      <p><input type="password" required value="Password" placeholder="Password"></p>
+
+      <p><input type="submit" value="Register" onclick="uploadData()"></p>
+
+    </fieldset>
+
+  </form>
+
+</div>
+<script src="/static/scripts/scriptRegistration.js" type="text/javascript"></script>
+</body>
+</html>
