@@ -13,10 +13,10 @@ type LikedSamplesRepository struct {
 type Liker interface {
 	Create(c *model.LikedSamples) error
 	CreateTx(tx *sqlx.Tx, c *model.LikedSamples) error
-	GetAllAmount() (int, error)
-	GetAllAmountTx(tx *sqlx.Tx) (int, error)
-	GetAll() ([]model.LikedSamples, error)
-	GetAllTx(tx *sqlx.Tx) ([]model.LikedSamples, error)
+	GetUserAmount(userID int) (int, error)
+	GetUserAmountTx(tx *sqlx.Tx, userID int) (int, error)
+	GetUserAll(userID int) ([]model.Sample, error)
+	GetUserAllTx(tx *sqlx.Tx, userID int) ([]model.Sample, error)
 }
 
 func (l *LikedSamplesRepository) Create(c *model.LikedSamples) error {
@@ -56,21 +56,31 @@ func (l *LikedSamplesRepository) GetUserAll(userID int) ([]model.Sample, error) 
 }
 
 func (l *LikedSamplesRepository) GetUserAllTx(tx *sqlx.Tx, userID int) ([]model.Sample, error) {
-	samples := make([]model.Sample, 0)
 	samplesID := make([]int, 0)
-	rows, err := l.store.db.Query(tx, `SELECT sample_id FROM liked_samples WHERE user_id=$1;`, userID)
+	rows, err := l.store.db.Query(tx, `SELECT DISTINCT sample_id, user_id FROM liked_samples WHERE user_id=$1;`, userID)
 	if err != nil {
 		return nil, fmt.Errorf("failed to select from table samples; %w", err)
 	}
 	defer rows.Close()
 
 	for rows.Next() {
-		var sampleID int
-		err := rows.Scan(&sampleID)
+		sampleID := &model.LikedSamples{}
+		err := rows.StructScan(&sampleID)
 		if err != nil {
 			return nil, fmt.Errorf("failed to scan sampleID; %w", err)
 		}
-		samplesID = append(samplesID, sampleID)
+		samplesID = append(samplesID, sampleID.SampleID)
+	}
+
+	samples := make([]model.Sample, 0)
+	for _, v := range samplesID {
+		s := model.Sample{}
+		row := l.store.db.QueryRow(tx, `SELECT id, name, path, author, author_id, type FROM samples WHERE id=$1`, v)
+		err := row.StructScan(&s)
+		if err != nil {
+			return nil, fmt.Errorf("failed to struct scan sample %w", err)
+		}
+		samples = append(samples, s)
 	}
 
 	return samples, nil

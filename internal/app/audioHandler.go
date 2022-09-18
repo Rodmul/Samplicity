@@ -20,20 +20,50 @@ func (srv *server) handleFile() http.HandlerFunc {
 		if name == "" {
 			err := serveDirDB(w, srv.store)
 			if err != nil {
-				srv.Logger.Fatal(err)
+				srv.Logger.Println(err)
 			}
 			return
-		} else if name == created {
+		}
+		sample, err := srv.store.Sample().GetByName(name)
+		path := fmt.Sprintf(sample.Path + sample.Name + "." + sample.Type)
+		srv.Logger.Println(path)
+		if err != nil {
+			srv.Logger.Println("failed to get sample by name; %v", err)
+		}
+		http.ServeFile(w, r, path)
+	}
+}
+
+func (srv *server) handleCreatedFile() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		name := r.URL.Path[len(baseURL+created):]
+		if name == "" {
 			err := serveCreatedDir(w, r, srv.store)
 			if err != nil {
-				srv.Logger.Fatal(err)
+				srv.Logger.Println(err)
 			}
 			return
-		} else if name == liked {
+		}
+		sample, err := srv.store.Sample().GetByName(name)
+		path := fmt.Sprintf(sample.Path + sample.Name + "." + sample.Type)
+		srv.Logger.Println(path)
+		if err != nil {
+			srv.Logger.Println("failed to get sample by name; %v", err)
+		}
+		http.ServeFile(w, r, path)
+	}
+}
+
+func (srv *server) handleLikedFile() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		name := r.URL.Path[len(baseURL+liked):]
+		if name == "" {
 			err := serveLikedDir(w, r, srv.store)
 			if err != nil {
-				srv.Logger.Fatal(err)
+				srv.Logger.Println(err)
 			}
+
+			return
 		}
 		sample, err := srv.store.Sample().GetByName(name)
 		path := fmt.Sprintf(sample.Path + sample.Name + "." + sample.Type)
@@ -75,7 +105,7 @@ func serveLikedDir(w http.ResponseWriter, r *http.Request, s *store.Store) error
 		return fmt.Errorf("failed to parse token; %w", err)
 	}
 
-	samples, err := s.Sample().GetUserCreated(userID)
+	samples, err := s.LikedSample().GetUserAll(userID)
 	if err != nil {
 		return fmt.Errorf("failed to get created user samples; %w", err)
 	}

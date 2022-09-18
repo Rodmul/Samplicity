@@ -1,6 +1,6 @@
 package model
 
 type LikedSamples struct {
-	SampleID int
-	UserID   int
+	SampleID int `db:"sample_id"`
+	UserID   int `db:"user_id"`
 }

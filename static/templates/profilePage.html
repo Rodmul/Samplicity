@@ -11,23 +11,29 @@
     <div id="logo">Samplicity</div>
     <a href="http://localhost:8000/create/" id="createNew">Create new</a>
     <a href="http://localhost:8000/" id="library">Library</a>
-    <a href="http://localhost:8000/profile/" id="profile">Profile</a>
+    <a href="http://localhost:8000/user/" id="profile">Profile</a>
 </header>
 <div id="profile_info">
 
-    <h1 id="username_field">{{.Username}}</h1>
+    <div id="username_div">
+        <h1 id="username_text">Username:</h1>
+        <h1 id="username_field">{{.Username}}</h1>
+    </div>
 
-    <h1 id="email_field">{{.Email}}</h1>
+    <div id="email_div">
+        <h1 id="email_text">Email:</h1>
+        <h1 id="email_field">  {{.Email}}</h1>
+    </div>
 
-    <div id="liked_samples">
+    <div id="liked_samples_info">
         <a id="liked_samples_text">Liked samples: {{.Liked}}</a>
     </div>
 
-    <div id="created_samples">
-    <a id="created_samples_text">Created samples: {{.Created}}</a>
+    <div id="created_samples_info">
+        <a id="created_samples_text" href="http://localhost:8000/created/">Created samples: {{.Created}}</a>
     </div>
 
-    <p><a href="http://localhost:8000/auth" id="log_out_text">Log out</a></p>
+    <p id="log_out_p"><a href="http://localhost:8000/auth" id="log_out_text">Log out</a></p>
 
 </div>
 <script src="/static/scripts/scriptAuth.js" type="text/javascript"></script>

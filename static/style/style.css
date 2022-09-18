@@ -85,7 +85,7 @@ header #profile {
 /* Body styles*/
 
 body {
-    background-color: #dedede;
+    background-color: #BBBBBB99;
 }
 
 /* Library page styles */
@@ -165,7 +165,7 @@ body {
 }
 
 #playlist {
-    background: rgba(222, 222, 222, 0.33);
+    color: #BBBBBB99;
     border-radius: 10px;
     padding: 5px 5px 3px 5px;
     width: 50%;
@@ -176,34 +176,58 @@ body {
     overflow: auto;
 }
 
-#playlist a {
-    font-size: 19px;
+#playlist div a{
+    font-size: 20px;
     display: block;
     cursor: pointer;
-    padding: 2px 4px;
+    padding: 10px;
+    padding-left: 5%;
     margin-top: 8px;
     border-radius: 5px;
     height: 4%;
     overflow: hidden;
+    width: 80%;
+}
+
+#like_button {
+    margin-left: 69%;
+    width: 6%;
 }
 
 #playlist a.file { background: rgba(255, 255, 255, 0.5);}
 #playlist a { background: rgba(255, 255, 255, 0.5); }
-#playlist a.playing { background: #e5805e; font-weight: bold; color: #333333;}
-#playlist a:hover { background: rgba(255, 255, 255, 0.32);}
+#playlist a.playing { background: #e5805e; font-weight: bold; color: #e5e5e5;}
+#playlist a:hover { background: rgba(255, 255, 255, 0.32); color: #333333}
 
+#filters {
+    margin-left: 64%;
+    margin-top: 9%;
+}
+
+#created_samples {
+    margin-left: 6%;
+    font-size: 18px;
+}
+
+#liked_samples {
+    font-size: 18px;
+}
 
 /* Create page styles */
 
 .file-interface {
-    top: 35%;
-    left: 25%;
+    top: 30%;
+    left: 28%;
     display: inline-block;
     position: absolute;
+    padding: 50px;
+    background-color: #E9E9E9;
 }
 
 .file-chooser {
     border-radius: 5px;
+    color: #E9E9E9;
+    background-color: #E9E9E9;
 }
 
 .file-modification {
@@ -217,27 +241,56 @@ body {
     margin-left: 20px;
 }
 
+#name-field {
+    height: 40px;
+}
+
 #select-type-field {
     margin-left: 20px;
     height: 20px;
     margin-top: 1px;
 }
 
-#save {
-    margin-left: 60%;
+#start {
+    caret-color: #e5805e;
+}
+
+#save-button{
+    margin-left: 25%;
     margin-top: 100px;
+    background-color: #e5805e;
+    border: none;
+    border-radius: 3px;
+    color: #f4f4f4;
+    cursor: pointer;
+    font-family: inherit;
+    height: 50px;
+    width: 400px;
 }
 
-#filters {
-    margin-left: 64%;
-    margin-top: 9%;
+.action-samples-btn {
+    display: flex;
 }
 
-#created_samples {
-    margin-left: 4%;
-    font-size: 18px;
+#download-btn {
+    text-align: start;
+    margin-left: 2%;
+    max-width: 5%;
+    font-size: 15px;
 }
 
-#liked_samples {
-    font-size: 18px;
+#like-btn {
+    text-align: start;
+    margin-left: 2%;
+    max-width: 5%;
+    font-size: 10px;
+}
+
+input[type="file"]::file-selector-button {
+    border: 2px solid #e5805e;
+    padding: 0.2em 0.4em;
+    border-radius: 0.2em;
+    background-color: #EA9A7F;
+    transition: 1s;
+    color: #ffffff;
 }

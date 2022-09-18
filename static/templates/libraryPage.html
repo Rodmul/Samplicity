@@ -7,17 +7,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
           integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <header>
     <div id="logo">Samplicity</div>
     <a href="http://localhost:8000/create/" id="createNew">Create new</a>
     <a href="http://localhost:8000/" id="library">Library</a>
-    <a href="http://localhost:8000/profile/" id="profile">Profile</a>
+    <a href="http://localhost:8000/user/" id="profile">Profile</a>
 </header>
 
 <div id="filters">
-    <a id="liked_samples">Liked</a>
+    <a id="liked_samples" onclick="load(likedRoot, [])">Liked</a>
     <a id="created_samples" onclick="load(createdRoot, [])">Created</a>
 </div>
 

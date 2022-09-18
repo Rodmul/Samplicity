@@ -11,6 +11,7 @@ type Store struct {
 	userRepository           Profiler
 	sampleRepository         Sampler
 	createdSamplesRepository Creator
+	likedSamplesRepository   Liker
 }
 
 func New(db *sqlx.DB, l *log.Logger) *Store {
@@ -18,6 +19,17 @@ func New(db *sqlx.DB, l *log.Logger) *Store {
 		db:     &DB{db},
 		logger: l,
 	}
+}
+
+func (s *Store) LikedSample() Liker {
+	if s.likedSamplesRepository != nil {
+		return s.likedSamplesRepository
+	}
+
+	s.likedSamplesRepository = &LikedSamplesRepository{
+		store: s,
+	}
+	return s.likedSamplesRepository
 }
 
 func (s *Store) CreatedSample() Creator {

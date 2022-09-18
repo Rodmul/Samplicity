@@ -53,7 +53,7 @@ func (r *SampleRepository) GetAll() ([]model.Sample, error) {
 
 func (r *SampleRepository) GetAllTx(tx *sqlx.Tx) ([]model.Sample, error) {
 	samples := make([]model.Sample, 0)
-	rows, err := r.store.db.Query(tx, `SELECT id, name, path, author, type FROM samples;`)
+	rows, err := r.store.db.Query(tx, `SELECT id, name, path, author, author_id, type FROM samples;`)
 	if err != nil {
 		return nil, fmt.Errorf("failed to select from table samples; %w", err)
 	}

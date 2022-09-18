@@ -108,3 +108,55 @@ form fieldset a:hover { text-decoration: underline; }
     padding: 0 10px;
     width: 380px;
 }
+
+#username_div {
+    display: flex;
+    margin-top: 30px;
+}
+
+#username_text {
+    font-size: 25px;
+    color: #e5805e;
+}
+
+#username_field {
+    margin-left: 15px;
+}
+
+#email_div {
+    display: flex;
+    margin-top: 30px;
+}
+
+#email_text {
+    font-size: 25px;
+    color: #e5805e;
+}
+
+#email_field {
+    margin-left: 15px;
+}
+
+#liked_samples_info {
+    margin-top: 20px;
+}
+
+#liked_samples_text {
+    font-size: 20px;
+}
+
+#created_samples_info {
+    margin-top: 20px;
+}
+
+#created_samples_text {
+    font-size: 20px;
+}
+
+#log_out_text {
+    margin-left: 42%;
+}
+
+#log_out_p {
+    margin-top: 30%;
+}

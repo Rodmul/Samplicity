@@ -19,6 +19,7 @@ type server struct {
 const (
 	baseURL       = "/"
 	profile       = "profile/"
+	user          = "user/"
 	create        = "create/"
 	static        = "static/"
 	upload        = "upload/"
@@ -26,6 +27,8 @@ const (
 	login         = "login/"
 	registration  = "registration/"
 	authorization = "authorization/"
+	likesample    = "likesample/"
+	download      = "download/"
 )
 
 func NewServer() *server {
@@ -56,12 +59,17 @@ func (srv *server) registerHandlers() {
 	srv.router.HandleFunc(baseURL+create, srv.handleCreate())
 	srv.router.HandleFunc(baseURL, srv.handleLibrary())
 	srv.router.HandleFunc(baseURL+samples, srv.handleFile())
+	srv.router.HandleFunc(baseURL+created, srv.userIdentity(srv.handleCreatedFile()))
+	srv.router.HandleFunc(baseURL+liked, srv.userIdentity(srv.handleLikedFile()))
 	srv.router.HandleFunc(baseURL+profile, srv.userIdentity(srv.handleProfile()))
 	srv.router.HandleFunc(baseURL+upload, srv.userIdentity(srv.uploadFile()))
+	srv.router.HandleFunc(baseURL+download, srv.downloadFile())
+	srv.router.HandleFunc(baseURL+likesample, srv.userIdentity(srv.likeSample()))
 	srv.router.HandleFunc(baseURL+auth, srv.handleAuth())
 	srv.router.HandleFunc(baseURL+login, srv.handleLogin())
 	srv.router.HandleFunc(baseURL+login+registration, srv.handleRegistration())
 	srv.router.HandleFunc(baseURL+auth+authorization, srv.handleAuthorization())
+	srv.router.HandleFunc(baseURL+user, srv.userIdentity(srv.handleProfile()))
 	fileServer := http.FileServer(http.Dir("./static/"))
 	srv.router.Handle(baseURL+static, http.StripPrefix("/static", fileServer))
 }

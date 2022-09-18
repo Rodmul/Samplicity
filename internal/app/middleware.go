@@ -14,7 +14,6 @@ const (
 
 func (srv *server) userIdentity(next http.Handler) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-
 		token := session.GetSession(r)
 		r.Header.Set(authorizationHeader, token)
 
@@ -22,7 +21,7 @@ func (srv *server) userIdentity(next http.Handler) http.HandlerFunc {
 		if header == "" {
 			http.Redirect(w, r, "http://localhost:8000/auth/", http.StatusTemporaryRedirect)
 			srv.Logger.Println("empty auth header")
-			w.WriteHeader(http.StatusUnauthorized)
+			//w.WriteHeader(http.StatusUnauthorized)
 			return
 		}
 
