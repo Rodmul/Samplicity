@@ -216,8 +216,8 @@ body {
 /* Create page styles */
 
 .file-interface {
-    top: 30%;
-    left: 28%;
+    top: 25%;
+    left: 32%;
     display: inline-block;
     position: absolute;
     padding: 50px;
@@ -245,9 +245,14 @@ body {
     height: 40px;
 }
 
+#name {
+    height: 40px;
+    font-size: 20px;
+}
+
 #select-type-field {
     margin-left: 20px;
-    height: 20px;
+    height: 43px;
     margin-top: 1px;
 }
 
@@ -256,7 +261,7 @@ body {
 }
 
 #save-button{
-    margin-left: 25%;
+    margin-left: 13%;
     margin-top: 100px;
     background-color: #e5805e;
     border: none;
@@ -293,4 +298,17 @@ input[type="file"]::file-selector-button {
     background-color: #EA9A7F;
     transition: 1s;
     color: #ffffff;
+}
+
+.checkbox {
+    margin-bottom: 20px;
+    margin-left: 40px;
+}
+
+#start-time {
+    width: 30px;
+}
+
+#end-time {
+    width: 30px;
 }

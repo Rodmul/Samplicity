@@ -121,6 +121,7 @@ form fieldset a:hover { text-decoration: underline; }
 
 #username_field {
     margin-left: 15px;
+    font-size: 25px;
 }
 
 #email_div {
@@ -135,6 +136,7 @@ form fieldset a:hover { text-decoration: underline; }
 
 #email_field {
     margin-left: 15px;
+    font-size: 25px;
 }
 
 #liked_samples_info {

@@ -10,7 +10,6 @@ import (
 	"mime/multipart"
 	"net/http"
 	"os"
-	"strconv"
 )
 
 func (srv *server) uploadFile() http.HandlerFunc {
@@ -50,14 +49,14 @@ func (srv *server) uploadFile() http.HandlerFunc {
 
 		sample := &model.Sample{Name: name, Author: author.Username, AuthorID: userID, Path: "./samples/", Type: fileType}
 
-		startInt, err := strconv.Atoi(start)
+		/*startInt, err := strconv.Atoi(start)
 		if err != nil {
 			srv.Logger.Println("Failed to convert start values")
 		}
 		endInt, err := strconv.Atoi(end)
 		if err != nil {
 			srv.Logger.Println("Failed to convert start values")
-		}
+		}*/
 
 		srv.Logger.Println(name, fileType, start, end)
 
@@ -88,7 +87,7 @@ func (srv *server) uploadFile() http.HandlerFunc {
 		}
 
 		path := fmt.Sprintf(name + "." + fileType)
-		err = ffmpeg.Input("./samples/"+name, ffmpeg.KwArgs{"ss": startInt, "to": endInt}).
+		err = ffmpeg.Input("./samples/"+name, ffmpeg.KwArgs{"ss": start, "to": end}).
 			Output("./samples/" + path).OverWriteOutput().Run()
 		if err != nil {
 			srv.Logger.Printf("failed to cut audio %v", err)

@@ -16,13 +16,16 @@
     <input id="choose-file" class="action-btn" type="file" name="myFile">
     <div class="file-modification">
         <div id="name-field" class="modify-field">
-            <input id="name" maxlength="80" size="40" type="text">
+            <input id="name" maxlength="80" size="40" type="text" required>
             <h5>Name</h5>
         </div>
         <select id="select-type-field">
             <option value="wav">.wav</option>
             <option value="mp3">.mp3</option>
+            <option value="flac">.flac</option>
         </select>
+    </div>
+    <div class="file-modification">
         <div id="start-sample" class="modify-field">
             <input id="start" type="range" maxlength="80" size="40" value="0">
             <h5>Start</h5>
@@ -30,6 +33,15 @@
         <div id="end-sample" class="modify-field">
             <input id="end" type="range" maxlength="80" size="40" value="100">
             <h5>End</h5>
+        </div>
+        <input id="time-checkbox" type="checkbox" class="checkbox">
+        <div id="start-sample-time" class="modify-field">
+            <input id="start-time" >
+            <h5>Start time</h5>
+        </div>
+        <div id="end-sample-time" class="modify-field">
+            <input id="end-time">
+            <h5>End time</h5>
         </div>
     </div>
     <button id="save-button" class="action-btn" onclick="uploadFile()">Save</button>

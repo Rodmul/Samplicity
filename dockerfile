@@ -3,7 +3,10 @@ FROM golang:1.18.5-alpine3.15 AS builder
 COPY . /Samplicity/cmd/samplicityserver
 WORKDIR /Samplicity/cmd/samplicityserver
 
-RUN go build -o ./bin/main samplicity/cmd
+RUN apk  update
+RUN apk add ffmpeg
+
+RUN go build -o ./bin/main DriveApi/cmd
 
 FROM alpine:3.15
 WORKDIR /root/
